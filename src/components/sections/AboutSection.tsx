@@ -17,9 +17,9 @@ const AboutSection = () => {
             <div className="relative">
               <div className="absolute top-6 -left-6 h-full w-full bg-tutor-cream rounded-2xl -z-10"></div>
               <img 
-                src="/placeholder.svg" 
+                src="https://cdn.poehali.dev/files/2c2e33ad-9f31-465f-955e-eac34916364a.jpeg" 
                 alt="Фото преподавателя" 
-                className="w-full h-auto rounded-2xl shadow-md relative z-10"
+                className="w-full h-auto rounded-2xl shadow-md relative z-10 grayscale"
               />
             </div>
           </div>

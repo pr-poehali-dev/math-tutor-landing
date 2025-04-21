@@ -1,5 +1,7 @@
-import { Star } from "lucide-react";
+import { useState } from "react";
+import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 const testimonials = [
   {
@@ -35,6 +37,18 @@ const testimonials = [
 ];
 
 const TestimonialsSection = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const displayCount = 3;
+  const maxIndex = testimonials.length - displayCount;
+
+  const handlePrev = () => {
+    setCurrentIndex(prev => Math.max(0, prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentIndex(prev => Math.min(maxIndex, prev + 1));
+  };
+
   return (
     <section id="testimonials" className="section-padding bg-tutor-cream">
       <div className="container-tutor">
@@ -45,28 +59,56 @@ const TestimonialsSection = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {testimonials.map((testimonial, index) => (
-            <Card key={index} className="bg-white border-none shadow-sm">
-              <CardContent className="p-6">
-                <div className="flex gap-1 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
-                  ))}
-                </div>
-                <p className="text-tutor-accentGray mb-6">"{testimonial.text}"</p>
-                <div className="flex items-center gap-3">
-                  <div className="bg-tutor-spaceGray/10 rounded-full h-10 w-10 flex items-center justify-center text-tutor-spaceGray font-semibold">
-                    {testimonial.name.charAt(0)}
-                  </div>
-                  <div>
-                    <p className="font-semibold">{testimonial.name}</p>
-                    <p className="text-sm text-tutor-accentGray">{testimonial.role}</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+        <div className="relative">
+          <div className="flex gap-6 overflow-hidden">
+            {testimonials
+              .slice(currentIndex, currentIndex + displayCount)
+              .map((testimonial, index) => (
+                <Card 
+                  key={index} 
+                  className="bg-white border-none shadow-sm flex-1 min-w-0 transition-all duration-300"
+                >
+                  <CardContent className="p-6">
+                    <div className="flex gap-1 mb-4">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+                      ))}
+                    </div>
+                    <p className="text-tutor-accentGray mb-6">"{testimonial.text}"</p>
+                    <div className="flex items-center gap-3">
+                      <div className="bg-tutor-spaceGray/10 rounded-full h-10 w-10 flex items-center justify-center text-tutor-spaceGray font-semibold">
+                        {testimonial.name.charAt(0)}
+                      </div>
+                      <div>
+                        <p className="font-semibold">{testimonial.name}</p>
+                        <p className="text-sm text-tutor-accentGray">{testimonial.role}</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+          </div>
+          
+          <div className="flex justify-center mt-8 gap-3">
+            <Button 
+              variant="outline" 
+              size="icon" 
+              className="rounded-full bg-white"
+              onClick={handlePrev} 
+              disabled={currentIndex === 0}
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </Button>
+            <Button 
+              variant="outline" 
+              size="icon" 
+              className="rounded-full bg-white"
+              onClick={handleNext} 
+              disabled={currentIndex >= maxIndex}
+            >
+              <ChevronRight className="h-5 w-5" />
+            </Button>
+          </div>
         </div>
       </div>
     </section>

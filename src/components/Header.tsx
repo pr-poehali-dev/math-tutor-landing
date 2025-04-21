@@ -32,8 +32,9 @@ const Header = () => {
       }`}
     >
       <div className="container-tutor flex items-center justify-between">
-        <a href="#" className="text-2xl font-bold text-tutor-spaceGray">
-          МатПрофи
+        <a href="#" className="flex items-center text-2xl font-bold text-tutor-spaceGray">
+          <span className="mr-2 text-3xl">π</span>
+          <span>МатПрофи</span>
         </a>
         
         {/* Desktop Navigation */}

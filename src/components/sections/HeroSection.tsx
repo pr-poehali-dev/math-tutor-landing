@@ -8,7 +8,7 @@ const HeroSection = () => {
         <div className="flex flex-col md:flex-row items-center gap-10">
           <div className="md:w-1/2 space-y-6">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-tutor-spaceGray leading-tight">
-              Математика станет <span className="text-blue-600">понятной</span> и <span className="text-blue-600">интересной</span>
+              Математика станет <span className="text-blue-800">понятной</span> и <span className="text-blue-800">интересной</span>
             </h1>
             <p className="text-lg md:text-xl text-tutor-accentGray">
               Индивидуальные занятия по математике для школьников и студентов. 
@@ -27,9 +27,9 @@ const HeroSection = () => {
             <div className="relative">
               <div className="absolute -inset-4 md:-inset-6 bg-white/50 rounded-3xl -z-10 backdrop-blur-sm"></div>
               <img 
-                src="/placeholder.svg" 
+                src="https://cdn.poehali.dev/files/11fb4f6e-4921-4816-8597-6ff4866a2b5d.jpeg" 
                 alt="Репетитор по математике" 
-                className="w-full h-auto rounded-2xl shadow-lg"
+                className="w-full h-auto rounded-2xl shadow-lg grayscale"
               />
             </div>
           </div>
